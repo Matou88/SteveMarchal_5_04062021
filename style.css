@@ -1,0 +1,10 @@
+header {
+  background-color: #F3E9F1;
+}
+
+.cardContent img {
+  object-fit: cover;
+  min-height: 200px;
+}
+
+/*# sourceMappingURL=style.css.map */
