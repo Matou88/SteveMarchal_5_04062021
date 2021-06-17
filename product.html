@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
     <script src="https://kit.fontawesome.com/5080c54a82.js" crossorigin="anonymous"></script>
-    <title>Norbert</title>
+    <title>Details Produit</title>
 </head>
-<body class="bg-light">
+<body class="bg-secondary">
     <header>
         <div class="container">
             <div class="row mb-4">
@@ -47,32 +47,42 @@
     </header>
 
     <div id="product">
-        <h1 id="title"></h1>
-        <div id="photo"/></div>
-        <select id="colorChoise" onchange="">
-        </select>
-        <p id="price"></p>
-        <div id="add"></div>
-        <label for="q">Quantité: </label>
-        <select id="qt" name="q">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-        </select>
-        <p id="ref"></p>
-        <p id="description"></p>
+        <div id="photo" class="row"/></div>
+        <div class="detail">
+            <div class="row bg-dark text-light pt-4">
+                <div class="col-lg-9">
+                    <h1 class="col text-center pb-2" id="title"></h1>
+                    <p class="mb-4" id="ref"></p>
+                    <p id="description" class="text-center"></p>
+                </div>
+                <div class="col-lg-3 pt-4 mb-4 text-lg-center aside border border-info rounded">
+                    <label for="color">Couleur</label>
+                    <select class="mb-2" id="colorChoise" name="color" onchange=""></select><br/>
+                    <label for="q">Quantité: </label>
+                    <select class="mb-2" id="quantity" name="q">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select><br/>
+                    <p class="font-weight-bold" id="price"></p>
+                    <div id="add"></div>
+                </div>      
+            </div>
+        </div>
+
+
 
         
     </div>
 
 
 
-    <script src="./norbert.js"></script>
+    <script src="./product.js"></script>
 </body>
 </html>

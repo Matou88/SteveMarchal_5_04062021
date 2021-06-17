@@ -25,7 +25,7 @@ cardContent.innerHTML = teddiesData.map (
             <div class="card-body">
                 <div class="row">
                     <div class="col-9">
-                        <h2>${teddy.name}<h2>
+                        <h2><a href="./product.html?id=${teddy._id}">${teddy.name}</a><h2>
                     </div>
                     <div class="col-3 text-end">
                         <h3>${teddy.price / 100} €</h3>
