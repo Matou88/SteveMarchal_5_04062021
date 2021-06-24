@@ -18,14 +18,12 @@ const teddyDisplay = async () => {
     document.getElementById("price").innerHTML = teddyData.price / 100 + ' €';
     document.getElementById("ref").innerHTML = "ref : " + teddyData._id;
     document.getElementById("description").innerHTML = teddyData.description;
-    document.getElementById("add").innerHTML = `<button type="button" class="add-to-cart mb-4 rounded btn-info btn-lg" data-teddy="${JSON.stringify(teddyData)}">Ajouter au panier</button>`
+    document.getElementById("add").innerHTML = `<button type="button" class="add-to-cart mb-4 rounded btn-lg" data-teddy="${JSON.stringify(teddyData)}">Ajouter au panier</button>`
 
     // Pour les couleurs ***********************
     colorChoise.innerHTML = teddyData.colors.map((color) => `<option value="${color}" class"select">${color}</option>`).join("");
 };
 
-
-// localStorage.setItem("names", JSON.stringify(names));
 
 const handleCart = () => { 
     document.querySelector(".add-to-cart").addEventListener('click', () => {

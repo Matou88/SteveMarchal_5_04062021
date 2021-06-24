@@ -1,0 +1,32 @@
+header {
+  background-color: #F3E9F1;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.aside {
+  background-color: F2F2F2;
+}
+
+td img {
+  object-fit: cover;
+  width: 120px;
+  margin-right: 2em;
+}
+
+button, .btn {
+  background: linear-gradient(105deg, #DE8F38, #9D63D4);
+}
+
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 1px solid black;
+}
+
+/*# sourceMappingURL=style.css.map */

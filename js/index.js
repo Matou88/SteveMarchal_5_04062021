@@ -20,18 +20,19 @@ cardContent.innerHTML = teddiesData.map (
 
 
     <div class="col-12 col-lg-4 mb-4">
-        <div class="card border-dark shadow h-100">
-            <img src=${teddy.imageUrl} alt="Peluche ${teddy.name}" class="card-img-top h-75" />
+        <div class="card bg-dark text-light border-dark shadow h-100">
+            <img src=${teddy.imageUrl} alt="Peluche ${teddy.name}" class="card-img-top h-75 border-dark"/>
             <div class="card-body">
                 <div class="row">
                     <div class="col-9">
-                        <h2><a href="./product.html?id=${teddy._id}">${teddy.name}</a><h2>
+                        <h2 class="card-title">${teddy.name}<h2>
                     </div>
                     <div class="col-3 text-end">
                         <h3>${teddy.price / 100} €</h3>
                     </div>
                 </div>
-                <p>${teddy.description}</p>
+                <p class="card-text text-justify">${teddy.description}</p>
+                <a href="../html/product.html?id=${teddy._id}" class="btn fs-4 mx-auto d-block stretched-link">Voir Plus</a>
             </div>
         </div>
     </div>
