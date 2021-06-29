@@ -1,7 +1,6 @@
 let ttc = document.getElementById("ttc");
 let tva = document.getElementById("tva");
 let storage = JSON.parse(localStorage.getItem('cart'));
-let quantity = JSON.parse(localStorage.getItem("cart.quantity"));
 
 
 const cartData = () => {
@@ -35,7 +34,6 @@ const cartData = () => {
 }
 
 const sum = () =>{
-
     if (storage === null){
         console.log("zéro");
     } else {
@@ -94,24 +92,6 @@ const more = () =>{
         })
     })
 };
-
-
-
-// function countInCart() {
-//     let productNumbers = document.getElementById("CartCount"); 
-//     const cartCount = () => {
-//         let count = 0
-//         for (let i = 0; i < storage.length; i++) {
-//         count += storage[i].quantity;
-//         }
-//     }
-//     cartCount();
-//     console.log(count);
-//     if (productNumbers) {
-//       productNumbers.innerHTML = `${count}`;
-//     };
-// }
-
 
 cartData();
 sum();

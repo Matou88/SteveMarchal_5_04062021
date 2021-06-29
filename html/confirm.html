@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,12 +13,12 @@
     <header>
         <div class="container">
             <div class="row mb-4">
-                <div class="col-12 col-lg-3">
+                <div class="col-12 col-lg-4">
                     <a class="navbar-brand" href="index.html">
                         <img src="../logo.png"  height="150" alt="logo Orinco">
                     </a>
                 </div>
-                <nav class="col-3 col-lg-3 navbar navbar-expand-lg navbar-light align-self-lg-end">
+                <nav class="col-3 col-lg-2 navbar navbar-expand-lg navbar-light align-self-lg-end">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -28,7 +28,7 @@
                                 <a class="nav-link text-dark" href="index.html">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="./panier.html">Panier <i class="fas fa-shopping-basket" aria-label="vers le panier"><span class="text-danger" id="CartCount"">0</span></i></a>
+                                <a class="nav-link text-dark" href="./panier.html"><i class="fas fa-shopping-basket" aria-label="vers le panier"></i> Panier</a>
                             </li>
                         </ul>
                     </div>
@@ -36,7 +36,7 @@
                 <div class="col-9 col-lg-6 align-self-center align-self-lg-end pb-lg-2">
                     <form method="POST">
                         <div class="input-group">
-                            <input type="text" id="search" class="form-control" placeholder="Que désirez-vous ?" aria-label="barre de recherche" autocomplete="off"/>
+                            <input type="text" id="search" class="form-control" placeholder="Peluche" aria-label="barre de recherche" autocomplete="off"/>
                             <div class="input-group-append">
                                 <button class="btn btn-xl text-uppercase js-scroll-trigger"" type="submit"><i class="fas fa-search"></i></button>
                             </div>
@@ -47,16 +47,16 @@
         </div>
     </header>
     
-    <div class="text-light">
-        <form id="form" action="/ma-page-de-traitement" method="post">
+    <div class="text-light valid">
+        <form class="form" id="form" action="/ma-page-de-traitement">
             <div class="row">
                 <div class="form-group mb-4 mt-4 col-lg-4 mx-lg-auto">
                     <label for="firstName">Prénom :</label>
-                    <input required type="text" id="firstName" class="form-control" name="firstName">
+                    <input required pattern="[A-Z][A-Za-z' -]+" type="text" id="firstName" class="form-control" name="firstName">
                 </div>
                 <div class="form-group mb-4 mt-4 col-lg-4 mx-lg-auto">
-                    <label for="name">Nom :</label>
-                    <input required type="text" id="lastName" class="form-control" name="lastName">
+                    <label for="lastName">Nom :</label>
+                    <input required pattern="[A-Z][A-Za-z' -]+" type="text" id="lastName" class="form-control" name="lastName">
                 </div>
             </div>
             <div class="form-group mb-4 col-lg-6 mx-lg-auto">
@@ -69,12 +69,13 @@
             </div>
             <div class="form-group mb-4 col-lg-6 mx-lg-auto">
                 <label for="mail">E-mail :</label>
-                <input required type="email" id="mail" class="form-control" name="email">
+                <input required type="email" id="email" class="form-control" name="email">
             </div>
             <div class="row mt-4">
                 <button type="submit" class="btn btn-lg col-8 mx-auto mt-4">Valider</button>
             </div>
         </form>
+        <div id="alertElement" class="text-center"></div>
     </div>
 <script src="../js/confirm.js"></script>
 </body>

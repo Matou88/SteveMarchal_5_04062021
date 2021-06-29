@@ -17,8 +17,6 @@ await fetchTeddies();
 cardContent.innerHTML = teddiesData.map ( 
     (teddy)  =>  
 `
-
-
     <div class="col-12 col-lg-4 mb-4">
         <div class="card bg-dark text-light border-dark shadow h-100">
             <img src=${teddy.imageUrl} alt="Peluche ${teddy.name}" class="card-img-top h-75 border-dark"/>
@@ -36,7 +34,6 @@ cardContent.innerHTML = teddiesData.map (
             </div>
         </div>
     </div>
-
 `
 
 )

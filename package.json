@@ -2,15 +2,10 @@
   "name": "orinoco-front",
   "version": "1.0.0",
   "description": "",
-  "main": "./Back/app.js",
+  "main": "./js/index.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./css/style.css",
-    "start": "./Back/server.js"
+    "sass": "sass --watch ./sass/main.scss:./css/style.css"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.16.4",
-    "uuid": "^3.3.2"
-  }
+  "license": "ISC"
 }

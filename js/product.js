@@ -27,7 +27,6 @@ const teddyDisplay = async () => {
 
 const handleCart = () => { 
     document.querySelector(".add-to-cart").addEventListener('click', () => {
-        // localStorage.clear()
         cart = localStorage.getItem("cart")
         if (!cart) {
             localStorage.setItem("cart", "[]")
@@ -41,9 +40,6 @@ const handleCart = () => {
             data: teddyData
         })
         localStorage.setItem("cart", JSON.stringify(cart));
-            // quantity: document.getElementById("quantity").value,
-            // color: document.querySelector("select").value,
-            // data: teddyData
     });
         console.log(localStorage.getItem("cart"));
     }

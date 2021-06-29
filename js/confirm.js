@@ -1,31 +1,47 @@
-function send(e) {
+let storage = JSON.parse(localStorage.getItem('cart'));
+
+const order = () => {
+    return storage.map((item) => item.data._id)
+};
+
+async function postData(url, data) {
+    const response = await fetch(url, {
+        method: "POST",
+        headers:{
+            'Accept': 'application/json',
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+    console.log(response);
+    return response.json();
+}
+
+const login = async (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/api/teddies", {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json', 
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({firstName: document.getElementById("firstName")})
-      body: JSON.stringify({lastName: document.getElementById("lastName")})
-      body: JSON.stringify({address: document.getElementById("address")})
-      body: JSON.stringify({city: document.getElementById("city")})
-      body: JSON.stringify({email: document.getElementById("email")})
+
+    postData("http://localhost:3000/api/teddies/order", {
+        contact: {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            address: document.getElementById("address").value,
+            city: document.getElementById("city").value,
+            email: document.getElementById("email").value
+        },
+        products: order()
     })
-    .then(function(res) {
-      if (res.ok) {
-          console.log(body);
-        // return res.json();
-      }
+    .then((data) => {
+        console.log(data)
+        let valid = document.querySelector(".valid");
+        valid.innerHTML = 
+            `<div class="text-center">Merci ${data.contact.firstName} ${data.contact.lastName}.
+            Votre commande est effectuée et porte le numéro : ${data.orderId}</div>`;
     })
-    // .then(function(value) {
-    //     document
-    //       .getElementById("result")
-    //       .innerText = value.postData.text;
-    // });
-  }
-  
-  document
-    .getElementById("form")
-    .addEventListener("submit", send);
-  
+    .catch((e) => {
+        console.log(e);
+        console.log("Une erreur s'est produite, veuillez recommencez");
+    })
+
+}
+
+form.onsubmit = login;
