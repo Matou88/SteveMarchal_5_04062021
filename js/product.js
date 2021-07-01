@@ -40,6 +40,7 @@ const handleCart = () => {
             data: teddyData
         })
         localStorage.setItem("cart", JSON.stringify(cart));
+        alert("L'article a bien été ajouté à votre commande.")
     });
         console.log(localStorage.getItem("cart"));
     }

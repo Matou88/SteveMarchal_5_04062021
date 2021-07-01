@@ -21,11 +21,11 @@ const cartData = () => {
             <td class="align-middle text-center">
                 <div class="input-group">
                     <button class="less" type="button" data-index="${i}">-</button>
-                    <span type="text" data-index="${i}" class="myNumber form-control input-number">   ${storage[i].quantity}   </span>
+                    <span type="text" data-index="${i}" class="myNumber form-control input-number">${storage[i].quantity}</span>
                     <button class="more" type="button" data-index="${i}">+</button>
                 </div>  
             </td>
-            <td class="align-middle text-center">${(storage[i].data.price/100 * storage[i].quantity)} €</td>
+            <td class="align-middle text-center">${(storage[i].data.price/100 * storage[i].quantity)}€</td>
             </tr>`;
         }
         lineCart.innerHTML = dataCart;
@@ -42,9 +42,9 @@ const sum = () =>{
         for (let i = 0; i < storage.length; i++) {
         sum += (storage[i].data.price/100 * storage[i].quantity);
         }
-        ttc.innerHTML = `${sum} €`;
-        let taxes = Math.round(((sum/120)*20) * 100) / 100;
-        tva.innerHTML = `${taxes} €`;
+        ttc.innerHTML = `${sum}€`;
+        let taxes = Math.round((sum/100)*20);
+        tva.innerHTML = `${taxes}€`;
     }
 };
 
@@ -83,7 +83,7 @@ const more = () =>{
             let value = storage[button.dataset.index].quantity;
             console.log(value);
             value++;
-            console.log("moins 1 ça fait : ", value);
+            console.log("plus 1 ça fait : ", value);
             storage[button.dataset.index].quantity = value;
             console.log(storage);          
             localStorage.setItem("cart", JSON.stringify(storage));

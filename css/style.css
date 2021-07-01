@@ -2,9 +2,17 @@ header {
   background-color: #F3E9F1;
 }
 
+@font-face {
+  font-family: "belligerent";
+  src: url("../../Fonts/belligerent.ttf");
+}
 a {
   text-decoration: none;
   color: black;
+}
+
+h1 {
+  font-family: "belligerent", arial;
 }
 
 .aside {
@@ -13,8 +21,13 @@ a {
 
 td img {
   object-fit: cover;
-  width: 120px;
-  margin-right: 2em;
+  width: 100 px;
+  max-height: 100px;
+  margin-right: 1em;
+}
+
+.more, .less {
+  width: 30%;
 }
 
 button, .btn {

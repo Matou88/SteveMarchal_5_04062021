@@ -1,5 +1,14 @@
+@font-face{
+    font-family: "belligerent";
+    src: url('../../Fonts/belligerent.ttf');
+}
+
 a{
     text-decoration: none;
     color: black;
+}
+
+h1{
+    font-family: "belligerent", arial;
 }
 
