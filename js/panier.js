@@ -7,8 +7,9 @@ const cartData = () => {
     let lineCart = document.getElementById('cart-line');
     let emptyCart = document.getElementById('empty-cart')
 
-    if (storage === null){
+    if (storage == '' || storage == NaN || storage == undefined || storage == null){
         emptyCart.innerHTML = '<div class="text-center"><div>Panier vide</div></div>';
+        
     } else {
         let dataCart = [];
         for (let i = 0; i < storage.length; i++) {
@@ -95,6 +96,7 @@ const more = () =>{
 
 cartData();
 sum();
+
 
 //*************************** Partie formulaire ***************************//
 
