@@ -46,6 +46,7 @@ const sum = () =>{
         ttc.innerHTML = `${sum}€`;
         let taxes = Math.round((sum/100)*20);
         tva.innerHTML = `${taxes}€`;
+        localStorage.setItem('total', sum);
     }
 };
 
@@ -139,7 +140,7 @@ const login = async (e) => {
     })
     .catch((e) => {
         console.log(e);
-        console.log("Une erreur s'est produite, veuillez recommencez");
+        alert("Une erreur s'est produite, veuillez recommencez");
     })
 
 }
