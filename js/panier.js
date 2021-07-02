@@ -96,3 +96,51 @@ const more = () =>{
 cartData();
 sum();
 
+//*************************** Partie formulaire ***************************//
+
+const order = () => {
+    return storage.map((item) => item.data._id)
+};
+
+async function postData(url, data) {
+    const response = await fetch(url, {
+        method: "POST",
+        headers:{
+            'Accept': 'application/json',
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+    console.log(response);
+    return response.json();
+}
+
+const login = async (e) => {
+    e.preventDefault();
+
+    postData("http://localhost:3000/api/teddies/order", {
+        contact: {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            address: document.getElementById("address").value,
+            city: document.getElementById("city").value,
+            email: document.getElementById("email").value
+        },
+        products: order()
+    })
+    .then((data) => {
+        console.log(data)
+        localStorage.setItem('userName', data.contact.firstName);
+        localStorage.setItem('userLastName', data.contact.lastName);
+        localStorage.setItem('orderID', data.orderId);
+        window.location.href = "./confirm.html";
+    })
+    .catch((e) => {
+        console.log(e);
+        console.log("Une erreur s'est produite, veuillez recommencez");
+    })
+
+}
+
+form.onsubmit = login;
+

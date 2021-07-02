@@ -1,47 +1,12 @@
-let storage = JSON.parse(localStorage.getItem('cart'));
+let userName = localStorage.getItem('userName');
+let userLastName = localStorage.getItem('userLastName');
+let orderId = localStorage.getItem('orderID');
 
-const order = () => {
-    return storage.map((item) => item.data._id)
-};
+document.getElementById("thanks").innerHTML = 
+    `<div class="mt-4 mb-4">
+    Merci ${userName} ${userLastName} pour votre achat. <br/>
+    Le numéro de commande est : ${orderId}
+    </div>
+    `;
 
-async function postData(url, data) {
-    const response = await fetch(url, {
-        method: "POST",
-        headers:{
-            'Accept': 'application/json',
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    });
-    console.log(response);
-    return response.json();
-}
-
-const login = async (e) => {
-    e.preventDefault();
-
-    postData("http://localhost:3000/api/teddies/order", {
-        contact: {
-            firstName: document.getElementById("firstName").value,
-            lastName: document.getElementById("lastName").value,
-            address: document.getElementById("address").value,
-            city: document.getElementById("city").value,
-            email: document.getElementById("email").value
-        },
-        products: order()
-    })
-    .then((data) => {
-        console.log(data)
-        let valid = document.querySelector(".valid");
-        valid.innerHTML = 
-            `<div class="text-center">Merci ${data.contact.firstName} ${data.contact.lastName}.
-            Votre commande est effectuée et porte le numéro : ${data.orderId}</div>`;
-    })
-    .catch((e) => {
-        console.log(e);
-        console.log("Une erreur s'est produite, veuillez recommencez");
-    })
-
-}
-
-form.onsubmit = login;
+localStorage.clear();

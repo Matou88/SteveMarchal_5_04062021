@@ -49,37 +49,10 @@
         </div>
     </header>
     
-    <div class="container text-light valid pb-4">
-        <h1 class="text-center">Confirmation</h1>
-        <form class="form" id="form" action="/ma-page-de-traitement">
-            <div class="row">
-                <div class="form-group mb-4 mt-4 col-lg-4 mx-lg-auto">
-                    <label for="firstName">Prénom :</label>
-                    <input required pattern="[A-Za-z' -]+" type="text" id="firstName" class="form-control" name="firstName">
-                </div>
-                <div class="form-group mb-4 mt-lg-4 col-lg-4 mx-lg-auto">
-                    <label for="lastName">Nom :</label>
-                    <input required pattern="[A-Za-z' -]+" type="text" id="lastName" class="form-control" name="lastName">
-                </div>
-            </div>
-            <div class="form-group mb-4 col-lg-6 mx-lg-auto">
-                <label for="address">Adresse :</label>
-                <input required type="text" id="address" class="form-control" name="address">
-            </div>
-            <div class="form-group mb-4 col-lg-6 mx-lg-auto">
-                <label for="city">Ville :</label>
-                <input required type="text" id="city" class="form-control" name="city">
-            </div>
-            <div class="form-group mb-4 col-lg-6 mx-lg-auto">
-                <label for="email">E-mail :</label>
-                <input required type="email" id="email" class="form-control" name="email">
-            </div>
-            <div class="row mt-4">
-                <button type="submit" class="btn btn-lg col-8 mx-auto mt-4">Valider</button>
-            </div>
-        </form>
-        <div id="alertElement" class="text-center"></div>
-    </div>
+   <div class="container text-center text-light pb-4 pt-4">
+       <h1>Commande validée</h1>
+       <div id="thanks"></div>
+   </div>
 
     <footer class="pt-4 pb-4 text-center footer">
         <p>Site en developpement<br/>
