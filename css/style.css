@@ -2,26 +2,28 @@ header {
   background-color: #F3E9F1;
 }
 
-@font-face {
-  font-family: "belligerent";
-  src: url("../../Fonts/belligerent.ttf");
-}
 a {
   text-decoration: none;
   color: black;
 }
 
 h1 {
-  font-family: "belligerent", arial;
+  font-family: "Finger Paint", cursive;
+  font-weight: bold;
+}
+
+body {
+  font-family: "Podkova", serif;
 }
 
 .aside {
-  background-color: F2F2F2;
+  color: black;
+  background-color: #F2F2F2;
 }
 
 td img {
   object-fit: cover;
-  width: 100 px;
+  width: 150px;
   max-height: 100px;
   margin-right: 1em;
 }

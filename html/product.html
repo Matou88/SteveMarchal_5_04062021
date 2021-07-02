@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=Podkova&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5080c54a82.js" crossorigin="anonymous"></script>
     <title>Details Produit</title>
 </head>
@@ -27,7 +30,7 @@
                                 <a class="nav-link text-dark" href="index.html">Accueil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="./panier.html"><i class="fas fa-shopping-basket" aria-label="vers le panier"></i> Panier</a>
+                                <a class="nav-link text-dark" href="./panier.html"><i class="fas fa-shopping-basket"></i> Panier</a>
                             </li>
                         </ul>
                     </div>
@@ -37,7 +40,7 @@
                         <div class="input-group">
                             <input type="text" id="search" class="form-control" placeholder="Peluche" aria-label="barre de recherche" autocomplete="off"/>
                             <div class="input-group-append">
-                                <button class="btn btn-xl text-uppercase js-scroll-trigger"" type="submit"><i class="fas fa-search"></i></button>
+                                <button class="btn btn-xl text-uppercase js-scroll-trigger" type="submit"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </form>
@@ -47,36 +50,36 @@
     </header>
 
     <div class="container" id="product">
-        <div id="photo" class="row"/></div>
-            <div class="detail">
-                <div class="row bg-dark text-light pt-4">
-                    <div class="col-lg-9">
-                        <h1 class="col text-center pb-2" id="title"></h1>
-                        <p class="mb-4" id="ref"></p>
-                        <p id="description" class="text-center"></p>
-                    </div>
-                    <div class="col-lg-3 pt-4 mb-4 text-lg-center aside border border-info rounded">
-                        <label for="color">Couleur</label>
-                        <select class="mb-2" id="colorChoise" name="color" onchange=""></select><br/>
-                        <label for="q">Quantité: </label>
-                        <select class="mb-2" id="quantity" name="q">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                        </select><br/>
-                        <p class="font-weight-bold" id="price"></p>
-                        <div id="add"></div>
-                    </div>      
+        <div id="photo" class="row"></div>
+        <div class="detail">
+            <div class="row bg-dark text-light pt-4 ps-4 pe-4">
+                <div class="col-lg-9">
+                    <h1 class="col text-center pb-2" id="title"></h1>
+                    <p class="mb-4" id="ref"></p>
+                    <p id="description" class="text-center"></p>
                 </div>
+                <div class="col-lg-3 pt-4 mb-4 text-center aside border border-info rounded">
+                    <label for="colorChoise">Couleur</label>
+                    <select class="mb-2" id="colorChoise" name="color" onchange=""></select><br/>
+                    <label for="quantity">Quantité: </label>
+                    <select class="mb-2" id="quantity" name="q">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select><br/>
+                    <p class="font-weight-bold" id="price"></p>
+                    <div id="add"></div>
+                </div>      
             </div>
-        </div>    
-    </div>
+        </div>
+    </div>    
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="../js/product.js"></script>
 </body>
