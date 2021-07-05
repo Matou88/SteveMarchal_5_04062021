@@ -28,7 +28,18 @@ body {
 
 .aside {
   color: black;
-  background-color: #F2F2F2;
+  background-color: silver;
+}
+
+.fa-arrow-left {
+  font-size: 2.2em;
+  background: -webkit-linear-gradient(#9D63D4, #DE8F38);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-product {
+  background: linear-gradient(120deg, black, silver);
 }
 
 td img {

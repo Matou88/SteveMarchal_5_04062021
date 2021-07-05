@@ -100,6 +100,102 @@ sum();
 
 
 //*************************** Partie formulaire ***************************//
+let form = document.getElementById("form");
+
+form.firstName.addEventListener("change", () => {
+    validFirstName(this)
+});
+
+form.lastName.addEventListener("change", () => {
+    validLastName(this)
+});
+
+form.address.addEventListener("change", () => {
+    validAddress(this)
+});
+
+form.city.addEventListener("change", () => {
+    validCity(this)
+});
+
+form.email.addEventListener("change", () => {
+    validEmail(this)
+});
+
+const validFirstName = () => {
+    let firstNameRegExp = new RegExp('^[a-zA-Zà-ÿ -]+$', 'g');
+    let nameOk = document.getElementById('name');
+
+    if (firstNameRegExp.test(document.getElementById('firstName').value)) {
+        nameOk.innerHTML = "Prénom valide";
+        nameOk.classList.remove("text-danger");
+        nameOk.classList.add("text-success");
+    } else {
+        nameOk.innerHTML = "Prénom invalide";
+        nameOk.classList.remove("text-success");
+        nameOk.classList.add("text-danger");
+    }
+};
+
+const validLastName = () => {
+    let firstNameRegExp = new RegExp('^[a-zA-Zà-ÿ -]+$', 'g');
+    let lastNameOk = document.getElementById('nameLast');
+
+    if (firstNameRegExp.test(document.getElementById('lastName').value)) {
+        lastNameOk.innerHTML = "Nom valide";
+        lastNameOk.classList.remove("text-danger");
+        lastNameOk.classList.add("text-success");
+    } else {
+        lastNameOk.innerHTML = "Nom invalide";
+        lastNameOk.classList.remove("text-success");
+        lastNameOk.classList.add("text-danger");
+    }
+};
+
+const validAddress = () => {
+    let addressRegExp = new RegExp('^[a-zA-Z0-9à-ÿ -]+$', 'g');
+    let addressOk = document.getElementById('validAddress');
+
+    if (addressRegExp.test(document.getElementById('address').value)) {
+        addressOk.innerHTML = "Adresse valide";
+        addressOk.classList.remove("text-danger");
+        addressOk.classList.add("text-success");
+    } else {
+        addressOk.innerHTML = "Adresse invalide";
+        addressOk.classList.remove("text-success");
+        addressOk.classList.add("text-danger");
+    }
+};
+
+const validCity = () => {
+    let cityRegExp = new RegExp('^[a-zA-Zà-ÿ -]+$', 'g');
+    let cityOk = document.getElementById('validCity');
+
+    if (cityRegExp.test(document.getElementById('city').value)) {
+        cityOk.innerHTML = "Ville valide";
+        cityOk.classList.remove("text-danger");
+        cityOk.classList.add("text-success");
+    } else {
+        cityOk.innerHTML = "Ville invalide";
+        cityOk.classList.remove("text-success");
+        cityOk.classList.add("text-danger");
+    }
+};
+
+const validEmail = () => {
+    let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+    let small = document.getElementById('mail');
+
+    if (emailRegExp.test(document.getElementById('email').value)) {
+        small.innerHTML = "Adresse valide";
+        small.classList.remove("text-danger");
+        small.classList.add("text-success");
+    } else {
+        small.innerHTML = "Adresse invalide";
+        small.classList.remove("text-success");
+        small.classList.add("text-danger");
+    }
+};
 
 const order = () => {
     return storage.map((item) => item.data._id)

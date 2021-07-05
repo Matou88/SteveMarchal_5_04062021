@@ -1,4 +1,15 @@
 .aside{
     color: black;
-    background-color: #F2F2F2;
+    background-color: silver;
+}
+
+.fa-arrow-left{
+    font-size: 2.2em;
+    background: -webkit-linear-gradient($color-secondary, $color-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bg-product{
+    background: linear-gradient(120deg, black, silver);
 }
