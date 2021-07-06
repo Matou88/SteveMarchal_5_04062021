@@ -102,23 +102,23 @@ sum();
 //*************************** Partie formulaire ***************************//
 let form = document.getElementById("form");
 
-form.firstName.addEventListener("change", () => {
+form.firstName.addEventListener("input", () => {
     validFirstName(this)
 });
 
-form.lastName.addEventListener("change", () => {
+form.lastName.addEventListener("input", () => {
     validLastName(this)
 });
 
-form.address.addEventListener("change", () => {
+form.address.addEventListener("input", () => {
     validAddress(this)
 });
 
-form.city.addEventListener("change", () => {
+form.city.addEventListener("input", () => {
     validCity(this)
 });
 
-form.email.addEventListener("change", () => {
+form.email.addEventListener("input", () => {
     validEmail(this)
 });
 
@@ -130,10 +130,12 @@ const validFirstName = () => {
         nameOk.innerHTML = "Prénom valide";
         nameOk.classList.remove("text-danger");
         nameOk.classList.add("text-success");
+        return true;
     } else {
         nameOk.innerHTML = "Prénom invalide";
         nameOk.classList.remove("text-success");
         nameOk.classList.add("text-danger");
+        return false;
     }
 };
 
@@ -145,10 +147,12 @@ const validLastName = () => {
         lastNameOk.innerHTML = "Nom valide";
         lastNameOk.classList.remove("text-danger");
         lastNameOk.classList.add("text-success");
+        return true;
     } else {
         lastNameOk.innerHTML = "Nom invalide";
         lastNameOk.classList.remove("text-success");
         lastNameOk.classList.add("text-danger");
+        return false;
     }
 };
 
@@ -160,10 +164,12 @@ const validAddress = () => {
         addressOk.innerHTML = "Adresse valide";
         addressOk.classList.remove("text-danger");
         addressOk.classList.add("text-success");
+        return true;
     } else {
         addressOk.innerHTML = "Adresse invalide";
         addressOk.classList.remove("text-success");
         addressOk.classList.add("text-danger");
+        return false;
     }
 };
 
@@ -175,10 +181,12 @@ const validCity = () => {
         cityOk.innerHTML = "Ville valide";
         cityOk.classList.remove("text-danger");
         cityOk.classList.add("text-success");
+        return true;
     } else {
         cityOk.innerHTML = "Ville invalide";
         cityOk.classList.remove("text-success");
         cityOk.classList.add("text-danger");
+        return false;
     }
 };
 
@@ -190,10 +198,12 @@ const validEmail = () => {
         small.innerHTML = "Adresse valide";
         small.classList.remove("text-danger");
         small.classList.add("text-success");
+        return true;
     } else {
         small.innerHTML = "Adresse invalide";
         small.classList.remove("text-success");
         small.classList.add("text-danger");
+        return false;
     }
 };
 
@@ -214,32 +224,32 @@ async function postData(url, data) {
     return response.json();
 }
 
-const login = async (e) => {
+form.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    postData("http://localhost:3000/api/teddies/order", {
-        contact: {
-            firstName: document.getElementById("firstName").value,
-            lastName: document.getElementById("lastName").value,
-            address: document.getElementById("address").value,
-            city: document.getElementById("city").value,
-            email: document.getElementById("email").value
-        },
-        products: order()
-    })
-    .then((data) => {
-        console.log(data)
-        localStorage.setItem('userName', data.contact.firstName);
-        localStorage.setItem('userLastName', data.contact.lastName);
-        localStorage.setItem('orderID', data.orderId);
-        window.location.href = "./confirm.html";
-    })
-    .catch((e) => {
-        console.log(e);
-        alert("Une erreur s'est produite, veuillez recommencez");
-    })
-
-}
-
-form.onsubmit = login;
-
+    if (validEmail(form.email) && validFirstName(form.firstName) && validLastName(form.lastName) && validAddress(form.address) && validCity(form.city)){      
+        postData("http://localhost:3000/api/teddies/order", {
+            contact: {
+                firstName: document.getElementById("firstName").value,
+                lastName: document.getElementById("lastName").value,
+                address: document.getElementById("address").value,
+                city: document.getElementById("city").value,
+                email: document.getElementById("email").value
+            },
+            products: order()
+        })
+            .then((data) => {
+                console.log(data)
+                localStorage.setItem('userName', data.contact.firstName);
+                localStorage.setItem('userLastName', data.contact.lastName);
+                localStorage.setItem('orderID', data.orderId);
+                window.location.href = "./confirm.html";
+            })
+            .catch((e) => {
+                console.log(e);
+                alert("Une erreur s'est produite, veuillez recommencez");
+            })
+        
+        } else {
+            alert("Oups... Il y a une erreur dans un des champs, veuillez vérifier puis valider à nouveau ;) ")
+        }
+});
