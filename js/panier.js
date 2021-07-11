@@ -89,7 +89,11 @@ const less = () =>{
             value--;
             console.log("moins 1 ça fait : ", value);
             storage[button.dataset.index].quantity = value;
-            console.log(storage);          
+            if(value === 0){
+                storage.splice(button.dataset.index,1)
+                localStorage.setItem("cart", JSON.stringify(storage));
+            }
+            console.log(storage);      
             localStorage.setItem("cart", JSON.stringify(storage));
             cartData();
             sum();
