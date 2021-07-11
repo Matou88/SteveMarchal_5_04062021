@@ -10,6 +10,10 @@ const fetchTeddies = async () => {
     .then ((data) => (teddyData = data));
 };
 
+/**
+ * fetch pour accéder aux données.
+ */
+
 const teddyDisplay = async () => {
     await fetchTeddies();
     
@@ -24,6 +28,9 @@ const teddyDisplay = async () => {
     colorChoise.innerHTML = teddyData.colors.map((color) => `<option value="${color}" class"select">${color}</option>`).join("");
 };
 
+/**
+ * fonction pour créer le html en se servant des données obtenues juste avant.
+ */
 
 const handleCart = () => { 
     document.querySelector(".add-to-cart").addEventListener('click', () => {
@@ -45,6 +52,13 @@ const handleCart = () => {
         console.log(localStorage.getItem("cart"));
     }
 
+/**
+ * Fonction servant à ajouter un article au panier.
+ * Une écoute sur le clic du bouton "Ajouter au panier"
+ * On ajoute au localStorage "cart", s'il n'éxite pas, alors on définit cart comme un array vide puis on ajoute
+ * la quantité, la couleur et le data (pour avoir toutes le données nécessaire pour la suite).
+ * On met donc à jour le localStorage "cart" puis on informe l'utilisateur que l'article a été ajouté (à l'aide d'une alert).
+ */
 
 
 teddyDisplay().then(handleCart);

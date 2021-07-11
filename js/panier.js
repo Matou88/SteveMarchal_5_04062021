@@ -14,25 +14,31 @@ const cartData = () => {
         let dataCart = [];
         for (let i = 0; i < storage.length; i++) {
             
-            dataCart = dataCart + `<tr>
-            <td class="align-middle text-center"><button class="delete-item" data-index="${i}" type="button"><i class="fas fa-trash-alt"></i></button></td>
-            <td class="align-middle"><a href='../html/product.html?id=${storage[i].data._id}'><img src="${storage[i].data.imageUrl}" alt="photo de peluche ${storage[i].data.name}" class="img-thumbnail"/>${storage[i].data.name}</a></td>
-            <td class="align-middle text-center">${storage[i].color}</td>
+            dataCart = dataCart + `
+                <tr>
+                    <td class="align-middle text-center"><button class="delete-item" data-index="${i}" type="button"><i class="fas fa-trash-alt"></i></button></td>
+                    <td class="align-middle"><a href='../html/product.html?id=${storage[i].data._id}'><img src="${storage[i].data.imageUrl}" alt="photo de peluche ${storage[i].data.name}" class="img-thumbnail"/>${storage[i].data.name}</a></td>
+                    <td class="align-middle text-center">${storage[i].color}</td>
 
-            <td class="align-middle text-center">
-                <div class="input-group">
-                    <button class="less" type="button" data-index="${i}">-</button>
-                    <span type="text" data-index="${i}" class="myNumber form-control input-number">${storage[i].quantity}</span>
-                    <button class="more" type="button" data-index="${i}">+</button>
-                </div>  
-            </td>
-            <td class="align-middle text-center">${(storage[i].data.price/100 * storage[i].quantity)}€</td>
-            </tr>`;
-        }
+                    <td class="align-middle text-center">
+                        <div class="input-group">
+                            <button class="less" type="button" data-index="${i}">-</button>
+                            <span type="text" data-index="${i}" class="myNumber form-control input-number">${storage[i].quantity}</span>
+                            <button class="more" type="button" data-index="${i}">+</button>
+                        </div>  
+                    </td>
+                        <td class="align-middle text-center">${(storage[i].data.price/100 * storage[i].quantity)}€</td>
+                </tr>
+            `
+        };
         lineCart.innerHTML = dataCart;
     }
     delItem(); less(); more();
 }
+
+/**
+ * Fonction pour afficher la page en se servant des données du localStorage
+ */
 
 const sum = () =>{
     if (storage === null){
@@ -50,6 +56,12 @@ const sum = () =>{
     }
 };
 
+/**
+ * Fonction pour calculer le montant total et la TVA
+ * Une boucle for pour ajouter les éléments du panier multiplié par la quantité.
+ * Un calcul simple de la tva sur le montant total avec math.round pour l'arrondi.
+ */
+
 const delItem = () =>{
 
     document.querySelectorAll(".delete-item").forEach((button) => {
@@ -62,6 +74,12 @@ const delItem = () =>{
         })
     })
 }
+
+/**
+ * fonction pour la suppression d'un article (une ligne du tableau)
+ * on se sert de button.dataset.index que l'on a attribué au bouton lors de la création du panier
+ * afin de cibler la bonne ligne, puis splice pour la retirer. enfin un setItem pour enregistré le storage modifié.
+ */
 
 const less = () =>{
     document.querySelectorAll(".less").forEach((button) => {
@@ -79,6 +97,13 @@ const less = () =>{
     })
 };
 
+/**
+ * fonction pour baisser la quantité des objets du panier. (sachant que pour le moment l'Api n'accepte pas les quantités)
+ * en se servant là aussi de button.dataset.index pour cibler la bonne ligne (et la quantité)
+ * un value-- pour soustraire la quantité de 1, puis le un setItem pour tenir à jour le localStorage.
+ * On appelle les fonction cartData et sum pour actualiser.
+ */
+
 const more = () =>{
     document.querySelectorAll(".more").forEach((button) => {
         button.addEventListener("click", () => {
@@ -94,6 +119,10 @@ const more = () =>{
         })
     })
 };
+
+/**
+ * Même principe que la fonction less juste au dessus, mais cette fois, on ajoute 1 unité à chaque clics.
+ */
 
 cartData();
 sum();
@@ -122,6 +151,10 @@ form.email.addEventListener("input", () => {
     validEmail(this)
 });
 
+/**
+ * Une écoute pour chacun des champs, au remplissage de ces derniers.
+ */
+
 const validFirstName = () => {
     let firstNameRegExp = new RegExp('^[a-zA-Zà-ÿ -]+$', 'g');
     let nameOk = document.getElementById('name');
@@ -131,13 +164,21 @@ const validFirstName = () => {
         nameOk.classList.remove("text-danger");
         nameOk.classList.add("text-success");
         return true;
-    } else {
-        nameOk.innerHTML = "Prénom invalide";
-        nameOk.classList.remove("text-success");
-        nameOk.classList.add("text-danger");
-        return false;
     }
+    nameOk.innerHTML = "Prénom invalide";
+    nameOk.classList.remove("text-success");
+    nameOk.classList.add("text-danger");
+    return false;
 };
+
+/**
+ * 
+ * @returns boolean 
+ * Fonction du RegExp, si c'est bon on retourne un true pour la validation,
+ * on indique également à l'utilisateur que le prénom est valide en vert et dans le cas
+ * inverse en rouge. (en retirant l'autre class pour l'evolution).
+ * 
+ */
 
 const validLastName = () => {
     let firstNameRegExp = new RegExp('^[a-zA-Zà-ÿ -]+$', 'g');
@@ -148,13 +189,18 @@ const validLastName = () => {
         lastNameOk.classList.remove("text-danger");
         lastNameOk.classList.add("text-success");
         return true;
-    } else {
-        lastNameOk.innerHTML = "Nom invalide";
-        lastNameOk.classList.remove("text-success");
-        lastNameOk.classList.add("text-danger");
-        return false;
     }
+    lastNameOk.innerHTML = "Nom invalide";
+    lastNameOk.classList.remove("text-success");
+    lastNameOk.classList.add("text-danger");
+    return false;
 };
+
+/**
+ * 
+ * @returns boolean 
+ * 
+ */
 
 const validAddress = () => {
     let addressRegExp = new RegExp('^[a-zA-Z0-9à-ÿ -]+$', 'g');
@@ -165,13 +211,18 @@ const validAddress = () => {
         addressOk.classList.remove("text-danger");
         addressOk.classList.add("text-success");
         return true;
-    } else {
-        addressOk.innerHTML = "Adresse invalide";
-        addressOk.classList.remove("text-success");
-        addressOk.classList.add("text-danger");
-        return false;
     }
+    addressOk.innerHTML = "Adresse invalide";
+    addressOk.classList.remove("text-success");
+    addressOk.classList.add("text-danger");
+    return false;
 };
+
+/**
+ * 
+ * @returns boolean
+ * 
+ */
 
 const validCity = () => {
     let cityRegExp = new RegExp('^[a-zA-Zà-ÿ -]+$', 'g');
@@ -182,13 +233,18 @@ const validCity = () => {
         cityOk.classList.remove("text-danger");
         cityOk.classList.add("text-success");
         return true;
-    } else {
-        cityOk.innerHTML = "Ville invalide";
-        cityOk.classList.remove("text-success");
-        cityOk.classList.add("text-danger");
-        return false;
     }
+    cityOk.innerHTML = "Ville invalide";
+    cityOk.classList.remove("text-success");
+    cityOk.classList.add("text-danger");
+    return false;
 };
+
+/**
+ * 
+ * @returns boolean 
+ * 
+ */
 
 const validEmail = () => {
     let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
@@ -199,17 +255,24 @@ const validEmail = () => {
         small.classList.remove("text-danger");
         small.classList.add("text-success");
         return true;
-    } else {
-        small.innerHTML = "Adresse invalide";
-        small.classList.remove("text-success");
-        small.classList.add("text-danger");
-        return false;
     }
+    small.innerHTML = "Adresse invalide";
+    small.classList.remove("text-success");
+    small.classList.add("text-danger");
+    return false;
 };
+
+/**
+ * 
+ * @returns boolean 
+ * 
+ */
 
 const order = () => {
     return storage.map((item) => item.data._id)
 };
+
+/** les articles du panier sont dans order */
 
 async function postData(url, data) {
     const response = await fetch(url, {
@@ -223,6 +286,10 @@ async function postData(url, data) {
     console.log(response);
     return response.json();
 }
+
+/** préparation de la fonction post data contenant url et data
+ * le header donne le format des données que l'on envoie et que l'on reçoit.
+ */
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -253,3 +320,11 @@ form.addEventListener("submit", (e) => {
             alert("Oups... Il y a une erreur dans un des champs, veuillez vérifier puis valider à nouveau ;) ")
         }
 });
+
+/**
+ * Si les champs sont bien remplis, on envoie les informations du contact sous la forme souhaitée pour l'Api
+ * on ajoute également les produit du panier.
+ * Puis on stock les données qui nous intéresse, pour la page de confirmation, dont l'ID de la commande renvoyé par l'Api.
+ * On envoie la page confirm.html
+ * Une alert si une erreur se produit.
+ */

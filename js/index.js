@@ -9,7 +9,9 @@ const fetchTeddies = async () => {
 
     console.log(teddiesData);
 };
-
+/**
+ * On interroge l'Api à l'aide de fettch et on rempli l'array teddiesData avec la data en réponse.
+ */
 
 const teddiesDisplay = async () => {
 await fetchTeddies();
@@ -39,5 +41,10 @@ cardContent.innerHTML = teddiesData.map (
 )
 .join("");
 };
+
+/**
+ * On rempli le html à l'aide d'un map qui crée une boucle, chaque boucle sera une carte, on se sert des données que l'Api nous a
+ * retourné avec le fetch.
+ */
 
 teddiesDisplay();
