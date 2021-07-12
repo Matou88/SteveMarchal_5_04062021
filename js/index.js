@@ -1,12 +1,15 @@
 let teddiesData = [];
 let cardContent = document.querySelector(".cardContent");
+let error = document.getElementById("error");
 
 
 const fetchTeddies = async () => {
     await fetch('http://localhost:3000/api/teddies')
     .then ((res) => res.json())
-    .then ((data) => (teddiesData = data));
-
+    .then ((data) => (teddiesData = data))
+    .catch((err) => (error.innerHTML = `
+        <h1 class="text-center mb-4 mt-4">Aucun produit trouvé</h1>
+    `));
     console.log(teddiesData);
 };
 /**

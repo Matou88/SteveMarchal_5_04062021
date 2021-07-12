@@ -3,11 +3,20 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 let color;
 let cart = [];
+let error = document.getElementById("product");
 
 const fetchTeddies = async () => {
     await fetch('http://localhost:3000/api/teddies/'+ id)
     .then ((res) => res.json())
-    .then ((data) => (teddyData = data));
+    .then ((data) => (teddyData = data))
+    .catch((err) => (error.innerHTML = `
+        <h1 class="text-light text-center mb-4 mt-4">Aucun produit trouvé</h1>
+    `));
+    if(id.length != 24){
+        (error.innerHTML = `
+            <h1 class="text-light text-center mb-4 mt-4">Aucun produit trouvé</h1>
+        `);
+    }
 };
 
 /**
